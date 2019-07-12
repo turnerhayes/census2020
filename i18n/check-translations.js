@@ -3,25 +3,20 @@
 const path = require('path');
 
 const supportedLocales = require('./supported-locales');
+const getExtractedStrings = require('./get-extracted-strings');
 
 const translationsDir = path.resolve(__dirname, 'translations');
 
 let hasErrors = false;
 
-let definitions;
-
-try {
-  definitions = require('./translations/definitions.json');
-} catch (ex) {
-  throw new Error(`Error loading translation definitions: ${ex.message}`);
-}
+const extractedStrings = getExtractedStrings();
 
 supportedLocales.forEach(
   (locale) => {
     try {
       const translations = require(path.join(translationsDir, `translations.${locale}.json`));
 
-      Object.keys(definitions).forEach(
+      Object.keys(extractedStrings).forEach(
         (messageId) => {
           if (!(messageId in translations)) {
             console.error(`Translation file for locale ${locale} is missing an entry for message ID ${messageId}; rerun the i18n extraction script`);

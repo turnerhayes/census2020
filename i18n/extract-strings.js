@@ -1,72 +1,45 @@
 #!/usr/bin/env nodejs
 
 const path = require('path');
-const readdir = require('fs').readdirSync;
 const writeFile = require('fs').writeFileSync;
 const mkdir = require('mkdirp').sync;
-const transformFile = require('@babel/core').transformFileSync;
 
 const supportedLocales = require('./supported-locales');
-const webpackPaths = require('../webpack-paths');
-
-const filesToCheck = [
-  webpackPaths.entry
-];
-
-const componentDir = path.resolve(__dirname, '..', 'javascript', 'components');
-
-const addJSFiles = (dirPath) => {
-  for (const file of readdir(
-    dirPath,
-    {
-      encoding: 'utf8',
-      withFileTypes: true
-    }
-  )) {
-    if (file.isFile() && /\.js$/.test(file.name)) {
-      filesToCheck.push(path.join(dirPath, file.name));
-    } else if (file.isDirectory()) {
-      addJSFiles(path.join(dirPath, file.name));
-    }
-  }
-};
-
-addJSFiles(componentDir);
+const getExtractedStrings = require('./get-extracted-strings');
 
 const outputDir = path.resolve(__dirname, 'translations');
 
 mkdir(outputDir);
 
-let messages = {};
+let messages;
 
-const definitionsPath = path.resolve(__dirname, 'translations', 'definitions.json');
+const extractedStrings = getExtractedStrings();
+
+const englishTranslationsPath = path.resolve(__dirname, 'translations', 'translations.en.json');
 
 try {
-  messages = require(definitionsPath);
+  messages = require(englishTranslationsPath);
 } catch (ex) {}
+
+if (!messages) {
+  messages = {};
+}
 
 const newMessageIDs = [];
 
-for (const file of filesToCheck) {
-  const transformed = transformFile(
-    file,
-    {
-      plugins: [
-        'babel-plugin-react-intl'
-      ]
-    }
-  );
+Object.keys(extractedStrings).forEach((messageId) => {
+  if (
+    !(messageId in messages) ||
+    messages[messageId].defaultMessage !==
+      extractedStrings[messageId].defaultMessage
+  ) {
+    newMessageIDs.push(messageId);
 
-  for (const message of transformed.metadata['react-intl'].messages) {
-    if (
-      !(message.id in messages) ||
-      messages[message.id].defaultMessage !== message.defaultMessage
-    ) {
-      messages[message.id] = message;
-      newMessageIDs.push(message.id);
+    if (!(messageId in messages)) {
+      messages[messageId] = extractedStrings[messageId];
     }
   }
-}
+});
 
 const translationObjects = {};
 
@@ -87,7 +60,10 @@ supportedLocales.forEach(
           newMessageIDs.includes(messageId)
         ) {
           translations[messageId] = {
-            english: messages[messageId].defaultMessage,
+            description: messages[messageId].description,
+            english: locale === 'en'
+              ? undefined
+              : messages[messageId].defaultMessage,
             translation: locale === 'en'
               ? messages[messageId].defaultMessage
               : null
@@ -100,18 +76,6 @@ supportedLocales.forEach(
       path: translationsPath,
       translations
     };
-  }
-);
-
-writeFile(
-  definitionsPath,
-  JSON.stringify(
-    messages,
-    null,
-    '  '
-  ),
-  {
-    encoding: 'utf8'
   }
 );
 
