@@ -36,7 +36,9 @@ const App = () => {
   return (
     <main>
       {
-        !localStorage.getItem('GITHUB_TOKEN') ? (
+        // Temporarily disable Github integration
+        // eslint-disable-next-line no-constant-condition
+        false && !localStorage.getItem('GITHUB_TOKEN') ? (
           <AuthenticationScreen/>
         ) : (
           <React.Fragment>
