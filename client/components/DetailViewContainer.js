@@ -150,20 +150,12 @@ const REASONS = [
 ];
 
 const TopReasons = () => {
-  const screenWidth = window.innerWidth;
-  let size;
-  if (screenWidth < 1200) {
-    size = (screenWidth < 800) ? 'small' : 'medium';
-  } else {
-    size = 'large';
-  }
   const topReasonsClass = 'c_home__top-reasons';
 
   return (
     <ol
       className={classnames(
-        topReasonsClass,
-        `${topReasonsClass}__${size}`
+        topReasonsClass
       )}>
       <h2>
         <FormattedMessage
@@ -184,14 +176,12 @@ const TopReasons = () => {
 };
 
 const Factoid = ({ className, message, headerMessage, headerTitle, link }) => {
-  const factoidSize = (window.innerWidth < 800) ? 'mobile' : 'desktop';
   const factoidClass = 'c_home__factoid';
 
   return (
     <li
       className={classnames(
         factoidClass,
-        `${factoidClass}__${factoidSize}`,
         className
       )}
     >
@@ -347,48 +337,20 @@ export default class DetailViewContainer extends Component {
                 />
               }
             />
-            { screenWidth < 800 && (
-              <YoutubeItem
-                opts={{
-                  height: (screenWidth * 0.8 * 9 / 16).toString(),
-                  width: (screenWidth * 0.8).toString(),
-                  playerVars: {
-                    autoplay: 0
-                  }
-                }}>
-              </YoutubeItem>
-            )}
-            { screenWidth < 1280 && (
-              <TopReasons />
-            )}
           </ul>
-          { screenWidth > 800 && screenWidth < 1280 && (
+          <div
+            className="c_home__video-container">
             <YoutubeItem
-              style={{ alignSelf: 'center' }}
               opts={{
-                height: (screenWidth * 0.8 * 9 / 16).toString(),
-                width: (screenWidth * 0.8).toString(),
+                height: (600 * 9 / 16).toString(),
+                width: (600).toString(),
                 playerVars: {
                   autoplay: 0
                 }
               }}>
             </YoutubeItem>
-          )}
-          { screenWidth > 1280 && (
-            <div
-              className="c_home__video-container">
-              <YoutubeItem
-                opts={{
-                  height: (600 * 9 / 16).toString(),
-                  width: (600).toString(),
-                  playerVars: {
-                    autoplay: 0
-                  }
-                }}>
-              </YoutubeItem>
-              <TopReasons />
-            </div>
-          )}
+            <TopReasons />
+          </div>
         </div>
       </main>
     );

@@ -116,6 +116,15 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		padding: 0;
+
+		@media(max-device-width: 800px) {
+			& {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: unset;
+				align-items: center;
+			}
+		}
 	}
 
 	&__factoid {
