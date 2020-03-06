@@ -17,15 +17,36 @@ import {
 } from '../../i18n/supported-locales';
 import contactForm from '../images/contact-form.jpg';
 
-defineMessages({
+const messages = defineMessages({
   header: {
-    id: 'components.Contact.getInvolved.header',
+    id: 'Get Involved page > Page header',
     defaultMessage: 'Get Involved'
   },
   toastMessage: {
-    id: 'components.Contact.submitSuccessToast',
+    id: 'Get Involved page > Submission success toast message',
     description: 'Message shown to users in a popup when the contact form has been successfully submitted',
     defaultMessage: 'Your request for information has been submitted'
+  },
+  workingForCensusHeader: {
+    id: 'Get Involved page > Header for the "Interested in working for census" section',
+    defaultMessage: 'Interested in working for the Census?'
+  },
+  workingForCensus: {
+    id: 'components.Contact.workingForCensus',
+    defaultMessage: 'Find more information [here](https://2020census.gov/en/jobs)'
+  },
+  needMoreInformation: {
+    id: 'Get Involved Page > "Need more information" header',
+    defaultMessage: 'Need more information?'
+  },
+  visitFAQ: {
+    id: 'Get Involved Page > "Visit FAQ" prompt',
+    defaultMessage: 'Visit our [FAQ](/faq) or submit your question and a San Jose Census organizer will get back to you within 2 business days.'
+  },
+  firstNameLabel: {
+    id: 'components.Contact.fields.firstName',
+    defaultMessage: 'First Name',
+    description: 'Label for the First Name field in the Contact form'
   },
   checkbox1: {
     id: 'components.Contact.fields.interest.options.volunteer',
@@ -104,7 +125,7 @@ class Contact extends Component {
     toast(
       (
         <FormattedMarkdownMessage
-          id="components.Contact.submitSuccessToast"
+          {...messages.toastMessage}
         />
       ),
       {
@@ -172,7 +193,7 @@ class Contact extends Component {
         <div className="c_contact">
           <h1 className="c_contact__headline">
             <FormattedMessage
-              id="components.Contact.getInvolved.header"
+              {...messages.header}
             />
           </h1>
           <div className="c_contact__content">
@@ -184,48 +205,24 @@ class Contact extends Component {
               <div className="c_contact__content__col__blurb">
                 <h3 className="c_contact__content__col__blurb__headline">
                   <FormattedMessage
-                    id="components.Contact.workingForCensus.header"
+                    {...messages.workingForCensusHeader}
                   />
                 </h3>
                 <div className="c_contact__content__col__blurb__info">
                   <FormattedMarkdownMessage
-                    id="components.Contact.workingForCensus"
-                    defaultMessage="Find more information {link}"
-                    values={{
-                      link: (
-                        <a className="c_contact__content__col__blurb__info__link"
-                          href="https://2020census.gov/en/jobs">
-                          <FormattedMessage
-                            id="components.Contact.workingForCensus.link"
-                            defaultMessage="here"
-                          />
-                        </a>
-                      )
-                    }}
+                    {...messages.workingForCensus}
                   />
                 </div>
               </div>
               <div className="c_contact__content__col__blurb">
                 <h3 className="c_contact__content__col__blurb__headline">
                   <FormattedMessage
-                    id="components.Contact.needMoreInformation"
-                    defaultMessage="Need more information?"
+                    {...messages.needMoreInformation}
                   />
                 </h3>
                 <div className="c_contact__content__col__blurb__info">
                   <FormattedMarkdownMessage
-                    id="components.Contact.visitFaq"
-                    defaultMessage="Visit our {link} or submit your question and a San Jose Census organizer will get back to you within 2 business days."
-                    values={{
-                      link: (
-                        <a className="c_contact__content__col__blurb__info__link" href="/faq">
-                          <FormattedMessage
-                            id="components.Contact.visitFaq.link"
-                            defaultMessage="FAQ"
-                          />
-                        </a>
-                      )
-                    }}
+                    {...messages.visitFAQ}
                   />
                 </div>
               </div>
@@ -244,9 +241,7 @@ class Contact extends Component {
                       <h6 className="c_contact__content__form_col__form__row__label">
                         <span className="c_contact__content__form_col__form__row__label__required">* </span>
                         <FormattedMessage
-                          id="components.Contact.fields.firstName"
-                          defaultMessage="First Name"
-                          description="Label for the First Name field in the Contact form"
+
                         />
                       </h6>
                       <TextInput

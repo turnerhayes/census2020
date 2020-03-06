@@ -38,7 +38,7 @@
   },
   "components.Contact.workingForCensus": {
     "id": "components.Contact.workingForCensus",
-    "defaultMessage": "Find more information {link}"
+    "defaultMessage": "Find more information [here](https://2020census.gov/en/jobs)"
   },
   "components.Contact.workingForCensus.link": {
     "id": "components.Contact.workingForCensus.link",
@@ -50,7 +50,7 @@
   },
   "components.Contact.visitFaq": {
     "id": "components.Contact.visitFaq",
-    "defaultMessage": "Visit our {link} or submit your question and a San Jose Census organizer will get back to you within 2 business days."
+    "defaultMessage": "Visit our [FAQ](/faq) or submit your question and a San Jose Census organizer will get back to you within 2 business days."
   },
   "components.Contact.visitFaq.link": {
     "id": "components.Contact.visitFaq.link",
@@ -753,5 +753,22 @@
     "id": "components.SampleCensus.nonHohh_button",
     "description": "Non head of household questions button",
     "defaultMessage": "Someone else will answer the census for me"
+  },
+  "Get Involved page > Page header": {
+    "id": "Get Involved page > Page header",
+    "defaultMessage": "Get Involved"
+  },
+  "Get Involved page > Submission success toast message": {
+    "id": "Get Involved page > Submission success toast message",
+    "description": "Message shown to users in a popup when the contact form has been successfully submitted",
+    "defaultMessage": "Your request for information has been submitted"
+  },
+  "Get Involved page > Header for the \"Interested in working for census\" section": {
+    "id": "Get Involved page > Header for the \"Interested in working for census\" section",
+    "defaultMessage": "Interested in working for the Census?"
+  },
+  "Get Involved Page > \"Need more information\" header": {
+    "id": "Get Involved Page > \"Need more information\" header",
+    "defaultMessage": "Need more information?"
   }
 }

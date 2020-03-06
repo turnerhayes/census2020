@@ -96,8 +96,8 @@
     "translation": "Interested in working for the Census?"
   },
   "components.Contact.workingForCensus": {
-    "english": "Find more information {link}",
-    "translation": "Find more information {link}"
+    "english": "Find more information [here](https://2020census.gov/en/jobs)",
+    "translation": "Find more information [here](https://2020census.gov/en/jobs)"
   },
   "components.Contact.workingForCensus.link": {
     "english": "here",
@@ -108,8 +108,8 @@
     "translation": "Need more information?"
   },
   "components.Contact.visitFaq": {
-    "english": "Visit our {link} or submit your question and a San Jose Census organizer will get back to you within 2 business days.",
-    "translation": "Visit our {link} or submit your question and a San Jose Census organizer will get back to you within 2 business days."
+    "english": "Visit our [FAQ](/faq) or submit your question and a San Jose Census organizer will get back to you within 2 business days.",
+    "translation": "Visit our [FAQ](/faq) or submit your question and a San Jose Census organizer will get back to you within 2 business days."
   },
   "components.Contact.visitFaq.link": {
     "english": "FAQ",
@@ -690,5 +690,21 @@
   "components.SampleCensus.nonHohh_button": {
     "english": "Someone else will answer the census for me",
     "translation": "Someone else will answer the census for me"
+  },
+  "Get Involved page > Page header": {
+    "english": "Get Involved",
+    "translation": "Get Involved"
+  },
+  "Get Involved page > Submission success toast message": {
+    "english": "Your request for information has been submitted",
+    "translation": "Your request for information has been submitted"
+  },
+  "Get Involved page > Header for the \"Interested in working for census\" section": {
+    "english": "Interested in working for the Census?",
+    "translation": "Interested in working for the Census?"
+  },
+  "Get Involved Page > \"Need more information\" header": {
+    "english": "Need more information?",
+    "translation": "Need more information?"
   }
 }

@@ -96,8 +96,8 @@
     "translation": "Quan tâm đến việc làm cho Tổng điều tra?"
   },
   "components.Contact.workingForCensus": {
-    "english": "Find more information {link}",
-    "translation": "Tìm thêm thông tin {link}"
+    "english": "Find more information [here](https://2020census.gov/en/jobs)",
+    "translation": null
   },
   "components.Contact.workingForCensus.link": {
     "english": "here",
@@ -108,8 +108,8 @@
     "translation": "Cần thêm thông tin?"
   },
   "components.Contact.visitFaq": {
-    "english": "Visit our {link} or submit your question and a San Jose Census organizer will get back to you within 2 business days.",
-    "translation": "Truy cập {link} của chúng tôi hoặc gửi câu hỏi của bạn và nhà tổ chức Điều tra dân số San Jose sẽ liên lạc lại với bạn trong vòng 2 ngày làm việc."
+    "english": "Visit our [FAQ](/faq) or submit your question and a San Jose Census organizer will get back to you within 2 business days.",
+    "translation": null
   },
   "components.Contact.visitFaq.link": {
     "english": "FAQ",
@@ -690,5 +690,21 @@
   "components.SampleCensus.nonHohh_button": {
     "english": "Someone else will answer the census for me",
     "translation": "Một người khác sẽ trả lời điều tra dân số cho tôi"
+  },
+  "Get Involved page > Page header": {
+    "english": "Get Involved",
+    "translation": null
+  },
+  "Get Involved page > Submission success toast message": {
+    "english": "Your request for information has been submitted",
+    "translation": null
+  },
+  "Get Involved page > Header for the \"Interested in working for census\" section": {
+    "english": "Interested in working for the Census?",
+    "translation": null
+  },
+  "Get Involved Page > \"Need more information\" header": {
+    "english": "Need more information?",
+    "translation": null
   }
 }
